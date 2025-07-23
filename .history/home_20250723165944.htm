@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casio Maroc - Montres de Qualité | 100-500 DH</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        casio: {
+                        50: '#f0f9ff',
+                        500: '#0ea5e9',
+                        600: '#0284c7',
+                        700: '#0369a1',
+                        900: '#0c4a6e'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'pulse-soft': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-soft': 'bounce 1s infinite',
+                        'shimmer': 'shimmer 2s linear infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200px 100%;
+            animation: shimmer 2s linear infinite;
+        }
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            text-decoration: none;
+            color: white;
+            background-color: #20ba5a;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/212600000000" target="_blank" class="whatsapp-float flex items-center justify-center" title="Contactez-nous sur WhatsApp">
+        <span>💬</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-white">CASIO</h1>
+                    <span class="ml-2 text-white/80">Maroc</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#products" class="text-white/90 hover:text-white transition-colors">Produits</a>
+                    <a href="#about" class="text-white/90 hover:text-white transition-colors">À propos</a>
+                    <a href="#contact" class="text-white/90 hover:text-white transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div id="cart-count" class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">0</div>
+                    <button onclick="openCart()" class="bg-white text-casio-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Panier
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative z-10 text-center text-white px-4 animate-fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Montres <span class="text-yellow-400">CASIO</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
+                Découvrez notre collection exclusive de montres Casio au Maroc
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                <span class="text-3xl font-bold text-yellow-400">À partir de 100 DH</span>
+                <span class="text-lg text-gray-300">jusqu'à 500 DH</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <div class="bg-green-500 text-white px-6 py-3 rounded-full text-lg font-semibold">
+                    💳 Paiement à la livraison
+                </div>
+                <div class="bg-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold">
+                    🚚 Livraison gratuite
+                </div>
+            </div>
+            <button onclick="scrollToProducts()" class="bg-yellow-400 text-black px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-300 transition-all transform hover:scale-105 animate-bounce-soft">
+                Découvrir la Collection
+            </button>
+        </div>
+        
+        <!-- Floating elements -->
+        <div class="absolute top-20 left-10 w-16 h-16 bg-white/10 rounded-full animate-pulse-soft"></div>
+        <div class="absolute bottom-20 right-10 w-12 h-12 bg-yellow-400/20 rounded-full animate-pulse-soft"></div>
+        <div class="absolute top-1/2 left-1/4 w-8 h-8 bg-blue-400/20 rounded-full animate-pulse-soft"></div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Notre Collection
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Des montres Casio authentiques avec garantie officielle
+                </p>
+            </div>
+
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Pourquoi Choisir Nos Montres?</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg transform hover:scale-105 transition-all">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">💳</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Paiement à la Livraison</h3>
+                    <p class="text-gray-600">Payez uniquement après réception et vérification de votre commande</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg transform hover:scale-105 transition-all">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🚚</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Livraison Gratuite</h3>
+                    <p class="text-gray-600">Livraison gratuite dans tout le Maroc en 24-48h</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg transform hover:scale-105 transition-all">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">✅</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Commande WhatsApp</h3>
+                    <p class="text-gray-600">Commandez directement via WhatsApp pour un service personnalisé</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Contactez-nous</h2>
+                <p class="text-xl opacity-90">Commandez directement via WhatsApp</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="transform hover:scale-105 transition-all">
+                    <div class="text-3xl mb-4">💬</div>
+                    <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
+                    <a href="https://wa.me/212653812762" class="text-yellow-400 hover:text-yellow-300 transition-colors">
+                        +212 653 81 27 62
+                    </a>
+                </div>
+                <div class="transform hover:scale-105 transition-all">
+                    <div class="text-3xl mb-4">📧</div>
+                    <h3 class="text-xl font-bold mb-2">Email</h3>
+                    <p>contact@casio-maroc.com</p>
+                </div>
+                <div class="transform hover:scale-105 transition-all">
+                    <div class="text-3xl mb-4">📍</div>
+                    <h3 class="text-xl font-bold mb-2">Adresse</h3>
+                    <p>Casablanca, Maroc</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">CASIO Maroc</h3>
+                <p class="text-gray-400 mb-8">Votre destination pour les montres Casio authentiques</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
+                    <a href="https://wa.me/212653812762" class="text-gray-400 hover:text-white transition-colors">WhatsApp</a>
+                </div>
+                <div class="mt-8 pt-8 border-t border-gray-800">
+                    <p class="text-gray-400">&copy; 2025 Casio Maroc. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 max-h-96 overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold">Panier</h3>
+                <button onclick="closeCart()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div id="cart-items" class="mb-6">
+                <!-- Cart items will be populated here -->
+            </div>
+            <div class="flex justify-between items-center mb-4 border-t pt-4">
+                <span class="text-xl font-bold">Total:</span>
+                <span id="cart-total" class="text-xl font-bold text-casio-600">0 DH</span>
+            </div>
+            <div class="space-y-3">
+                <button id="order-btn" onclick="orderViaWhatsApp()" class="w-full bg-green-500 text-white px-4 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors flex items-center justify-center">
+                    <span class="mr-2">💬</span>
+                    Commander via WhatsApp
+                </button>
+                <button onclick="closeCart()" class="w-full bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors">
+                    Continuer les achats
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Info Modal -->
+    <div id="customer-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold mb-6">Informations de livraison</h3>
+            <form id="customer-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nom complet *</label>
+                    <input type="text" id="customer-name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-casio-500 focus:border-casio-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Téléphone *</label>
+                    <input type="tel" id="customer-phone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-casio-500 focus:border-casio-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Ville *</label>
+                    <select id="customer-city" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-casio-500 focus:border-casio-500">
+                        <option value="">Choisir une ville</option>
+                        <option value="Casablanca">Casablanca</option>
+                        <option value="Rabat">Rabat</option>
+                        <option value="Marrakech">Marrakech</option>
+                        <option value="Fès">Fès</option>
+                        <option value="Tanger">Tanger</option>
+                        <option value="Agadir">Agadir</option>
+                        <option value="Oujda">Oujda</option>
+                        <option value="Autre">Autre ville</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Adresse complète *</label>
+                    <textarea id="customer-address" required rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-casio-500 focus:border-casio-500"></textarea>
+                </div>
+                <div class="flex space-x-3 pt-4">
+                    <button type="button" onclick="closeCustomerModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg flex-1 hover:bg-gray-400 transition-colors">
+                        Annuler
+                    </button>
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg flex-1 hover:bg-green-600 transition-colors">
+                        ✅ Confirmer la commande
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let products = [];
+        
+        // Sample products with realistic Casio watch data
+        const productData = [
+            {
+                id: 1,
+                name: "Casio F-91W Digital Classic",
+                price: 120,
+                originalPrice: 150,
+                description: "Montre digitale légendaire, résistante à l'eau, éclairage LED",
+                features: ["Résistant à l'eau", "Éclairage LED", "Alarme", "Chronomètre"],
+                image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop&crop=center"
+            },
+            {
+                id: 2,
+                name: "Casio G-Shock DW-5600",
+                price: 350,
+                originalPrice: 420,
+                description: "Montre ultra-résistante aux chocs, parfaite pour le sport",
+                features: ["Résistant aux chocs", "Étanche 200m", "Rétroéclairage", "Alarmes multiples"],
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop&crop=center"
+            },
+            {
+                id: 3,
+                name: "Casio Edifice EFV-100",
+                price: 480,
+                originalPrice: 550,
+                description: "Montre élégante avec cadran métallique et bracelet en acier",
+                features: ["Chronographe", "Date", "Résistant à l'eau", "Design élégant"],
+                image: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=400&h=400&fit=crop&crop=center"
+            },
+            {
+                id: 4,
+                name: "Casio A168WA-1YES",
+                price: 180,
+                originalPrice: 220,
+                description: "Style vintage rétro avec bracelet en acier inoxydable",
+                features: ["Style vintage", "Éclairage LED", "Alarme", "Chronomètre"],
+                image: "https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=400&h=400&fit=crop&crop=center"
+            },
+            {
+                id: 5,
+                name: "Casio Baby-G BA-110",
+                price: 320,
+                originalPrice: 380,
+                description: "Montre sport féminine résistante aux chocs, design coloré",
+                features: ["Résistant aux chocs", "Étanche", "LED", "Design féminin"],
+                image: "https://images.unsplash.com/photo-1509048191080-d2e2678e3d60?w=400&h=400&fit=crop&crop=center"
+            },
+            {
+                id: 6,
+                name: "Casio Pro Trek PRG-330",
+                price: 500,
+                originalPrice: 600,
+                description: "Montre outdoor avec altimètre, baromètre et boussole",
+                features: ["Altimètre", "Baromètre", "Boussole", "Résistant aux chocs"],
+                image: "https://images.unsplash.com/photo-1509048191080-d2e2678e3d60?w=400&h=400&fit=crop&crop=center"
+            }
+        ];
+
+        function loadProducts() {
+            const grid = document.getElementById('products-grid');
+            
+            // Show loading skeletons first
+            grid.innerHTML = Array(6).fill(0).map(() => `
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="h-64 skeleton rounded-t-2xl"></div>
+                    <div class="p-6">
+                        <div class="h-6 skeleton rounded mb-2"></div>
+                        <div class="h-4 skeleton rounded mb-4 w-3/4"></div>
+                        <div class="flex justify-between items-center">
+                            <div class="h-8 skeleton rounded w-20"></div>
+                            <div class="h-10 skeleton rounded w-24"></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Simulate API delay and load real products
+            setTimeout(() => {
+                products = productData;
+                renderProducts();
+            }, 1000);
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            
+            grid.innerHTML = products.map(product => `
+                <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" onerror="this.src='https://via.placeholder.com/400x400/f0f0f0/666?text=Casio+Watch'">
+                        ${product.originalPrice > product.price ? `
+                            <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
+                                -${Math.round((1 - product.price/product.originalPrice) * 100)}%
+                            </div>
+                        ` : ''}
+                        <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-sm font-bold">
+                            ✓ Authentique
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">${product.name}</h3>
+                        <p class="text-gray-600 mb-3 text-sm">${product.description}</p>
+                        <div class="mb-4">
+                            <div class="flex flex-wrap gap-1">
+                                ${product.features.slice(0, 2).map(feature => `
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">${feature}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-2xl font-bold text-casio-600">${product.price} DH</span>
+                                ${product.originalPrice > product.price ? `
+                                    <span class="text-sm text-gray-500 line-through ml-2">${product.originalPrice} DH</span>
+                                ` : ''}
+                            </div>
+                            <button onclick="addToCart(${product.id})" class="bg-casio-600 text-white px-4 py-2 rounded-lg hover:bg-casio-700 transition-colors font-semibold">
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartDisplay();
+            showAddedToCart(product.name);
+        }
+        
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const orderBtn = document.getElementById('order-btn');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center py-4">Votre panier est vide</p>';
+                cartTotal.textContent = '0 DH';
+                orderBtn.disabled = true;
+                orderBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                return;
+            }
+            
+            orderBtn.disabled = false;
+            orderBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="flex items-center space-x-3 mb-4 p-3 border rounded-lg">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                    <div class="flex-1">
+                        <p class="font-semibold text-sm">${item.name}</p>
+                        <p class="text-sm text-gray-600">${item.price} DH x ${item.quantity}</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})" class="bg-gray-200 text-gray-700 w-6 h-6 rounded-full text-sm hover:bg-gray-300">-</button>
+                            <span class="text-sm font-semibold">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})" class="bg-gray-200 text-gray-700 w-6 h-6 rounded-full text-sm hover:bg-gray-300">+</button>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-1">
+                        <span class="text-lg">×</span>
+                    </button>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = total + ' DH';
+        }
+
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity <= 0) {
+                removeFromCart(productId);
+                return;
+            }
+            
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCartDisplay();
+            }
+        }
+        
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+        
+        function showAddedToCart(name) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
+            notification.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span>✓</span>
+                    <span>${name} ajouté au panier!</span>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        function openCart() {
+            document.getElementById('cart-modal').classList.remove('hidden');
+        }
+        
+        function closeCart() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        function openCustomerModal() {
+            document.getElementById('customer-modal').classList.remove('hidden');
+        }
+
+        function closeCustomerModal() {
+            document.getElementById('customer-modal').classList.add('hidden');
+        }
+        
+        function orderViaWhatsApp() {
+            if (cart.length === 0) {
+                alert('Votre panier est vide!');
+                return;
+            }
+            closeCart();
+            openCustomerModal();
+        }
+
+        function sendWhatsAppOrder() {
+            const name = document.getElementById('customer-name').value.trim();
+            const phone = document.getElementById('customer-phone').value.trim();
+            const city = document.getElementById('customer-city').value;
+            const address = document.getElementById('customer-address').value.trim();
+
+            if (!name || !phone || !city || !address) {
+                alert('Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+
+            // Format the order message
+            let message = `🛍️ *NOUVELLE COMMANDE CASIO MAROC*\n\n`;
+            message += `👤 *Client:* ${name}\n`;
+            message += `📱 *Téléphone:* ${phone}\n`;
+            message += `🏙️ *Ville:* ${city}\n`;
+            message += `📍 *Adresse:* ${address}\n\n`;
+            message += `📦 *DÉTAILS DE LA COMMANDE:*\n`;
+            message += `${'='.repeat(30)}\n`;
+            
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `${index + 1}. *${item.name}*\n`;
+                message += `   💰 Prix unitaire: ${item.price} DH\n`;
+                message += `   📦 Quantité: ${item.quantity}\n`;
+                message += `   💵 Sous-total: ${itemTotal} DH\n\n`;
+            });
+            
+            message += `${'='.repeat(30)}\n`;
+            message += `💰 *TOTAL COMMANDE: ${total} DH*\n\n`;
+            message += `✅ *Mode de paiement:* Paiement à la livraison\n`;
+            message += `🚚 *Livraison:* Gratuite dans tout le Maroc\n`;
+            message += `⚡ *Délai:* 24-48h après confirmation\n\n`;
+            message += `📅 *Date de commande:* ${new Date().toLocaleString('fr-FR', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            })}\n\n`;
+            message += `✨ Merci de confirmer la disponibilité et le délai de livraison.`;
+https://wa.me/
+            // WhatsApp number - REMPLACEZ par votre numéro réel
+            const whatsappNumber = '212600000000'; // ⚠️ IMPORTANT: Remplacez par votre vrai numéro WhatsApp
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            showOrderSuccess();
+            
+            // Clear cart and close modals
+            cart = [];
+            updateCartDisplay();
+            closeCustomerModal();
+            
+            // Reset form
+            document.getElementById('customer-form').reset();
+        }
+
+        function showOrderSuccess() {
+            const notification = document.createElement('div');
+            notification.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+            notification.innerHTML = `
+                <div class="bg-white rounded-2xl p-8 max-w-md w-full text-center transform animate-fade-in">
+                    <div class="text-6xl mb-4">✅</div>
+                    <h3 class="text-2xl font-bold mb-4 text-green-600">Commande Envoyée avec Succès!</h3>
+                    <p class="text-gray-600 mb-6">Votre commande a été envoyée via WhatsApp. Notre équipe vous contactera rapidement pour confirmer les détails et le délai de livraison.</p>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                        <p class="text-sm text-green-800">
+                            <strong>Prochaines étapes:</strong><br>
+                            1. Confirmation par WhatsApp<br>
+                            2. Préparation de votre commande<br>
+                            3. Livraison gratuite 24-48h
+                        </p>
+                    </div>
+                    <button onclick="this.closest('.fixed').remove()" class="bg-casio-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-casio-700 transition-colors">
+                        Parfait! 👍
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 8000);
+        }
+
+        // Form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const customerForm = document.getElementById('customer-form');
+            if (customerForm) {
+                customerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    sendWhatsAppOrder();
+                });
+            }
+        });
+        
+        // Close modals when clicking outside
+        document.getElementById('cart-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCart();
+            }
+        });
+
+        document.getElementById('customer-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCustomerModal();
+            }
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            updateCartDisplay();
+            
+            // Add scroll animations
+            window.addEventListener('scroll', function() {
+                const elements = document.querySelectorAll('.animate-slide-up');
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('animate-fade-in');
+                    }
+                });
+            });
+        });
+
+        // Product details modal
+        function showProductDetails(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl max-w-4xl w-full max-h-96 overflow-y-auto">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-3xl font-bold text-gray-900">${product.name}</h3>
+                            <button onclick="this.closest('.fixed').remove()" class="text-gray-500 hover:text-gray-700 text-3xl p-2">&times;</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-80 object-cover rounded-xl shadow-lg">
+                                <div class="mt-4 flex justify-center space-x-2">
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">✓ Authentique</span>
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">🚚 Livraison gratuite</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-gray-600 mb-6 text-lg leading-relaxed">${product.description}</p>
+                                <div class="mb-6">
+                                    <h4 class="font-bold text-xl mb-3 text-gray-900">🔧 Caractéristiques:</h4>
+                                    <ul class="space-y-2">
+                                        ${product.features.map(feature => `
+                                            <li class="flex items-center text-gray-700">
+                                                <span class="w-2 h-2 bg-casio-600 rounded-full mr-3"></span>
+                                                ${feature}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                                <div class="mb-6 p-4 bg-gray-50 rounded-xl">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-4xl font-bold text-casio-600">${product.price} DH</span>
+                                            ${product.originalPrice > product.price ? `
+                                                <span class="text-xl text-gray-500 line-through ml-3">${product.originalPrice} DH</span>
+                                                <div class="text-sm text-green-600 font-semibold">
+                                                    Économisez ${product.originalPrice - product.price} DH (${Math.round((1 - product.price/product.originalPrice) * 100)}%)
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onclick="addToCart(${product.id}); this.closest('.fixed').remove();" class="w-full bg-gradient-to-r from-casio-600 to-casio-700 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-casio-700 hover:to-casio-800 transition-all transform hover:scale-105 shadow-lg">
+                                    🛒 Ajouter au panier
+                                </button>
+                                <div class="mt-4 text-center text-sm text-gray-500">
+                                    💳 Paiement à la livraison • 🚚 Livraison 24-48h
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Add click event to product cards for details
+        document.addEventListener('click', function(e) {
+            const productCard = e.target.closest('.product-card');
+            if (productCard && !e.target.closest('button')) {
+                const productId = parseInt(productCard.querySelector('button[onclick*="addToCart"]').getAttribute('onclick').match(/\d+/)[0]);
+                showProductDetails(productId);
+            }
+        });
+
+        // Add keyboard support for accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close any open modals
+                const cartModal = document.getElementById('cart-modal');
+                const customerModal = document.getElementById('customer-modal');
+                
+                if (!cartModal.classList.contains('hidden')) {
+                    closeCart();
+                }
+                if (!customerModal.classList.contains('hidden')) {
+                    closeCustomerModal();
+                }
+                
+                // Close product detail modals
+                const productModals = document.querySelectorAll('.fixed.inset-0.bg-black.bg-opacity-50');
+                productModals.forEach(modal => {
+                    if (modal.id !== 'cart-modal' && modal.id !== 'customer-modal') {
+                        modal.remove();
+                    }
+                });
+            }
+        });
+
+        // Add some loading states and error handling
+        function addToCartWithLoading(productId) {
+            const button = event.target;
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '⏳ Ajout...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                addToCart(productId);
+                button.innerHTML = '✓ Ajouté!';
+                button.classList.add('bg-green-500', 'hover:bg-green-600');
+                button.classList.remove('bg-casio-600', 'hover:bg-casio-700');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    button.classList.add('bg-casio-600', 'hover:bg-casio-700');
+                }, 1000);
+            }, 300);
+        }
+
+        // Update the render function to use the new loading function
+        function updateAddToCartButtons() {
+            const buttons = document.querySelectorAll('button[onclick*="addToCart"]');
+            buttons.forEach(button => {
+                const productId = parseInt(button.getAttribute('onclick').match(/\d+/)[0]);
+                button.setAttribute('onclick', `addToCartWithLoading(${productId})`);
+            });
+        }
+    </script>
+</body>
+</html>
