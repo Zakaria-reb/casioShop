@@ -205,28 +205,35 @@
     </a>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-effect border-b border-white/20">
+    <nav class="fixed w-full z-50 glass-effect">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-black">CASIO</h1>
-                    <span class="ml-2 text-black/80">Maroc</span>
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-casio-500 to-casio-700 rounded-xl flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">C</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-white">CASIO</h1>
+                        <span class="text-xs text-white/80">Maroc Officiel</span>
+                    </div>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#products" class="text-black/90 hover:text-white transition-colors">Produits</a>
-                    <a href="#about" class="text-black/90 hover:text-white transition-colors">À propos</a>
-                    <a href="#contact" class="text-black/90 hover:text-white transition-colors">Contact</a>
+                    <a href="#products" class="text-white/90 hover:text-white transition-colors font-medium">Produits</a>
+                    <a href="#about" class="text-white/90 hover:text-white transition-colors font-medium">Avantages</a>
+                    <a href="#contact" class="text-white/90 hover:text-white transition-colors font-medium">Contact</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <div id="cart-count" class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">0</div>
-                    <button onclick="openCart()" class="bg-white text-casio-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                        Panier
-                    </button>
+                    <div class="relative">
+                        <div id="cart-count" class="absolute -top-2 -right-2 bg-accent-orange text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold min-w-6">0</div>
+                        <button onclick="openCart()" class="bg-white/20 backdrop-blur-sm text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-white/30 transition-all border border-white/30">
+                            🛒 Panier
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
-    <br><br><br>
+    <br>
     <!-- Hero Section -->
     <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
         <!-- Floating Elements -->
